@@ -1,0 +1,26 @@
+class LongestSubstringV1 {
+    public int lengthOfLongestSubstring(String s)   {
+        
+        int longest = 0 ;        
+        int startIdx = 0;
+        Set<Character> track= new HashSet();        
+        char[] chars = s.toCharArray();        
+        for (int idx = 0 ; idx < chars.length; idx++)   {            
+             if(!track.add((Character)chars[idx])){
+                 if(longest <track.size()){
+                    longest = track.size()  ;
+                 }
+                 track = new HashSet();
+                 startIdx = startIdx +1 ;
+                 idx = startIdx ;
+                 System.out.println("reset idx:"+idx+" startIdx:"+startIdx);
+                 track.add((Character)chars[idx]); 
+             }else{
+                 if(longest <track.size()){
+                    longest = track.size()  ;
+                 }
+             }
+         }
+        return longest;
+  }
+}
